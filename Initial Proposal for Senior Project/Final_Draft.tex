@@ -1,0 +1,84 @@
+\documentclass[11pt]{ieeeconf}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{lettrine}
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\title{Bumper Car Sumo}
+\author{Jaden Simon, Melvin Bosnjak, Daniel Humeniuk
+ \textit{Student}, \textit{University of Utah}}
+
+\begin{document}
+\begin{titlepage}
+  \centering
+  \
+  \vfil
+  \Large ECE 3992\\
+  \Large Spring 2019\\  
+  \Large Jaden Simon, Melvin Bosnjak, Daniel Humeniuk\\  
+  \Large Bumper Car Sumo\\
+  \Large http://bumpercarsumo.weebly.com/\\
+  \Large Initial Proposal Document\\
+  \vfil
+\end{titlepage}
+
+
+\maketitle
+\begin{abstract}
+Americans aren’t having fun anymore. The weight of capitalism is forcing families to work 60 hour weeks for low, soul-crushing pay. So not only do Americans lack the time for fun, they often lack the funds as well, leading to inefficient forms of entertainment. People with low life satisfaction tend to be unproductive in both their social life and their work life. An affordable form of entertainment would increase profits for businesses, and create an upward spiral of enjoyment, therefore, increasing productivity. In order to promote this, our group is designing an affordable, battle royale style, bumper car sumo game. This proposal will describe the motivation, design, and resources needed for this project.
+\end{abstract}
+
+\section{Introduction}
+\lettrine{T}{he} cost and entertainment efficiency of our game will be the most important criteria for success. Costs should be low enough that most people can afford to play, while our game should yield high levels of fun per minute played. Because entertainment value is our primary goal, costs will only have a secondary role in our design process. Battle royale games have become a major hit in the entertainment world due to their competitive nature, as such our team decided to create a game where player-controlled robots attempt to push each other out of an arena. Last player remaining wins. To facilitate gameplay, our robots need to be easily pushed around by other robots. Games that drag on forever with little action are not fun. Controls should be easy to enhance playability, though not too easy as complexity adds to the fun. We need some way to detect game conditions, such as when a robot is out of bounds or when a player wins. This could be done with a human referee, but that would take away immersion of the game. Because some players may not have friends to play with, it is desirable to have some sort of AI to play against. Competitive games are much more enjoyable with worthy opponents.
+
+Since cost is a contributing factor to our design, we will want to use existing technologies as much as possible. Robots can be constructed as a two-wheeled platform with wireless modules, similar to a segway. For extra entertainment, a spherical shell could encase the robot, reducing its traction on the play surface. A player’s phone can be used as a controller if a suitable app is developed. This negates the cost of constructing our own controllers at the slight cost of reduced playability. Computer vision libraries could allow us to track the location of each robot if painted differently. Exact positioning solves the problem of detecting game conditions, plus giving us plenty of information to use for a basic AI. 
+
+Our goal, above all else, is that our game is fun. Playtesting will be a major component of our design process, rethinking aspects of the game if we decide it is not fun. Costs will be mitigated, but entertainment value will never be sacrificed for savings. Smiles and laughs from players is our primary measure of success.
+
+\section{Design}
+
+\subsection{Outline}
+
+The project will require new software and hardware. To complete the project, we will need controllers, robots, trackers, and a main control mechanism. The controllers will be implemented as a web page that can be reached from many mediums. The robots will be created with two DC motors that are connected to WiFi or Bluetooth and powered by a battery.  A tracking system can be implemented with video tracking technology. The main controller for the game will need to communicate with the tracker and controllers. We may elect to run the controller from a laptop or a custom made device. With these four components, the game will be able to be made into a reality.
+
+\subsection{Robot}
+
+The robot will be a cylindrical shape with two wheels on each side of the body that can move in either direction. The robot will look similar to Fig. 1. In order to move forward, both of the wheels will spin at the same time at the same rate. To move backwards, the same principle applies in the opposite direction. To rotate the robot right or left the wheels will spin in opposite directions. In order to facilitate these functions in each robot, we will have two DC motors spinning the wheels. The DC motors will be controlled by a micro-controller that will be WiFi or bluetooth communication compatible. The micro-controller will get information from the main controller which will send it commands such as rotate right, rotate left, move forward, and move backward. The robot's micro-controller will then take this command and compile it down to its DC motor translation mentioned earlier.
+
+ \begin{figure}[h]
+  \centering
+      \includegraphics[width=0.5\textwidth]{images/SumoBot.png}
+        \caption{The design for the robot each player will control.}
+        \label{RobotFig}
+\end{figure}
+
+\subsection{Controller}
+
+The controller will be implemented as an mobile application that utilizes the phones bluetooth/WiFi peripherals to relay the users desired commands to the main controller.
+
+\subsection{Hub}
+
+The master controller will use computer vision to keep track of each players robots. It will also relay the users commands to the respective robots.
+
+\section{Resources}
+
+
+
+% \nocite{*}
+% \bibliographystyle{IEEEtran}
+% \bibliography{IEEEabrv,bib/ref.bib}
+\end{document}
+
+% \begin{figure}[h]
+%   \centering
+%       \includegraphics[width=0.5\textwidth]{images/Figure1.jpg}
+%         \caption{The two possible states Schrodinger’s cat could be observed as when the box is opened. \cite{Image}}
+% \end{figure}

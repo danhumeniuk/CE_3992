@@ -1,0 +1,18 @@
+@inproceedings{mgerla,
+  author    = "Mario Gerla and Eun-Kyu Lee and Giovanni Pau and Uichin Lee",
+  title     = "Internet of {V}ehicles: From {I}ntelligent {G}rid to {A}utonomous {C}ars and {V}ehicular {C}louds",
+  booktitle = "Internet of Things (WF-IoT), 2014 IEEE World Forum on",
+  pages     = "241--246",
+  address   = "Seoul, South Korea",
+  year      = "2014"
+}
+
+@article{thrun,
+  author  = "Anna Petrovskaya and Sebastian Thrun",
+  title   = "Model Based Vehicle Detection and Tracking for Autonomous Urban Driving",
+  journal = "Autonomous Robots",
+  volume  = 26,
+  issue   = "2-3",
+  pages   = "123-139",
+  year    = 2009
+}

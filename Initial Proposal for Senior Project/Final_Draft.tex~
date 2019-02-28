@@ -1,0 +1,128 @@
+\documentclass[11pt]{ieeeconf}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{lettrine}
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\title{Internet of Vehicles}
+\author{Raj Patel, \textit{Student Member}, \textit{IEEE}}
+
+\begin{document}
+\begin{titlepage}
+  \centering
+  \
+  \vfil
+  \Large ECE 3030\\
+  \Large Fall 2017\\  
+  \Large Raj Patel\\  
+  \Large Research on Autonomous Vehicles\\
+  \Large Final Written Project\\
+  \vfil
+\end{titlepage}
+
+
+\maketitle
+\begin{abstract}
+With the increasing number of drivers, road safety
+is becoming a great concern. To reduce safety risks, car makers
+have begun to include various technologies such as sensors to
+assist drivers in parking, emergency breaking, adaptive cruise
+control, etc. Even with these technologies, a driver cannot know
+what the intentions of surrounding vehicles are. Communication
+between vehicles locally and via the internet are key components
+to creating fully autonomous cars. Sharing information
+simultaneously between moving vehicles and the internet is
+difficult. This paper discusses methods of creating a network,
+known as the Internet of Vehicles, to efficiently communicate
+with other vehicles. This paper also discusses few challenges
+encountered in implementing such a network. In addition to
+challenges, results from recent advancements in this filed are
+discussed. With this network implemented, transportation via
+cars will become safer and faster.
+\end{abstract}
+
+\begin{keywords}
+Autonomous vehicles, internet of things, internet
+of vehicles, smart grids, vehicular ad hoc networks
+\end{keywords}
+
+\blfootnote{This paper was submited for review on November 27, 2018.}
+\blfootnote{R. Patel is with the Department of Computer Engineering at the University of Utah, Salt Lake City, UT 84101 USA (e-mail: raj.patel@utah.edu).}
+
+\section{Introduction}
+\lettrine{T}{he} Internet of Things (IoT) is becoming prominent as the
+number of devices that are capable of connecting to the
+internet increases. The idea of IoT comes from smart devices
+connected to the Internet that communicate with each other
+with minimum human input. An excellent example of IoT is a
+house where devices such as smart thermostat and security
+cameras are installed. A smart thermostat could be set up to
+turn on an air conditioner to desired settings when a person is
+near their house. The smart thermostat knows the person’s
+location via their smartphone, which now a day almost
+everyone keeps on them. This set up will keep functioning
+long as the smartphone and the smart thermostat are connected
+to internet. With a smart thermostat, the house temperature
+will be set to a user’s comfortable setting long before the user
+has entered the house. Similarly, a security camera that is
+connected to the internet can be set up to notify a person via
+their smartphone if it detects any movement. The nonfictions
+can be very helpful because it informs a person of any
+suspicious activity happening inside or outside of their house.
+With this information, the person can take proper precaution.
+Both the smart thermostat and the security camera are
+designed to ultimately make a person’s day to day life easier.
+
+The Internet of Things is not just a house with smart devices
+installed. It can be applied to many things. Fig. 1 above shows
+an illustration of devices that are used regularly in our day to
+day life. While Fig. 2 shows how IoT can be broken apart into
+smaller sub categories.
+
+Internet of Vehicles (IoV) is derived from the Internet of
+Things concept. In the IoV model, autonomous vehicles will
+be communicating with each other via the Internet, like the
+way devices communicate in IoT. However, IoV is more
+complex and difficult to implement. Since there will be very
+minimum user input, the autonomous vehicles must efficiently
+communicate with each other to maintain a steady traffic flow.
+The interesting aspect of vehicular network is that vehicles3
+will be sharing valuable information. In the case of an
+accident, the first vehicle to encounter the scene will share the
+information it collected with nearby vehicles. With this
+information being spread out, vehicles can navigate to an
+alternate path and keeping the traffic jam to minimum. This
+information can also indicate vehicles near the accident to
+clear a path for any law enforcement vehicles, ambulances and
+fire trucks [1].
+
+To create a massive network of IoV, communication
+between vehicles is very important. There are many challenges
+that currently face IoV. However, this paper focuses on couple
+of communication challenges. One, autonomous vehicles must
+be equipped with sufficient sensors and communication
+devices. Two, the vehicular network needs to efficiently
+manage and share information between vehicles. The IoV
+combined with autonomous vehicle will lead to safer, faster,
+and more comfortable vehicle transportation.
+
+\section{Materials and Methods}
+Artificial Intelligence can be used for many components that make up an autonomous car. However, since there are a lot of components, this paper focuses on summarizing path planning and vehicle detection. 
+
+
+\section{Conclusion}
+In conclusion, the feature of Artificial Intelligence in autonomous cars seems promising. Each component in the cars will have use of AI. Path planning and vehicle detection are only couple of the component that already use AI. However, they are not perfect and are being constantly improved. AI for autonomous cars is an important area to research because its market is growing. Ultimately, fully autonomous cars will make everyone’s day to day life easier and safer. 
+
+\nocite{*}
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,bib/ref.bib}
+\end{document}
+
