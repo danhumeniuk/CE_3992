@@ -49,26 +49,45 @@ Our goal, above all else, is that our game is fun. Playtesting will be a major c
 
 The project will require new software and hardware. To complete the project, we will need controllers, robots, trackers, and a main control mechanism. The controllers will be implemented as a web page that can be reached from many mediums. The robots will be created with two DC motors that are connected to WiFi or Bluetooth and powered by a battery.  A tracking system can be implemented with video tracking technology. The main controller for the game will need to communicate with the tracker and controllers. We may elect to run the controller from a laptop or a custom made device. With these four components, the game will be able to be made into a reality.
 
+\subsection{Hub}
+
+The Hub will be a raspberry pi device that will have four primary functions: To capture the game state from a camera peripheral, use computer vision to keep track of each robots location, host a web server that will have bi-directional communication with the controllers, and wifi communication to relay the players commands to their respective robots. 
+
+
 \subsection{Robot}
 
 The robot will be a cylindrical shape with two wheels on each side of the body that can move in either direction. The robot will look similar to Fig. 1. In order to move forward, both of the wheels will spin at the same time at the same rate. To move backwards, the same principle applies in the opposite direction. To rotate the robot right or left the wheels will spin in opposite directions. In order to facilitate these functions in each robot, we will have two DC motors spinning the wheels. The DC motors will be controlled by a micro-controller that will be WiFi or bluetooth communication compatible. The micro-controller will get information from the main controller which will send it commands such as rotate right, rotate left, move forward, and move backward. The robot's micro-controller will then take this command and compile it down to its DC motor translation mentioned earlier.
 
  \begin{figure}[h]
   \centering
-      \includegraphics[width=0.5\textwidth]{images/SumoBot.png}
+      \includegraphics[width=0.5\textwidth]{images/RobotSketch.pdf}
         \caption{The design for the robot each player will control.}
         \label{RobotFig}
 \end{figure}
 
 \subsection{Controller}
 
-The controller will be implemented as an mobile application that utilizes the phones bluetooth/WiFi peripherals to relay the users desired commands to the main controller.
+The controllers will be any sort of device that can access the internet. Players will use their device to connect to the Hub by accessing a web page. This web page will be running a web server that is in constant communication with the robots. Once the player goes to the web page they will be prompted with available robots. If there is an available robot, the user will then choose and connect to that robot. Now that the player is mapped to that robot it will be constantly communicating its movement requests to the web server which will propagate it to the robot. The controller interface will be the arrow keys for a computer and buttons for a phone. The forward and backward movements will correspond to the up and down arrow keys, and the rotate right and rotate left movements will correspond to the right and left arrow keys. The web page will also send the player devices information about the game state such as players still active and possibly a live feed of the game.
 
-\subsection{Hub}
+\subsection{Tracking}
 
-The master controller will use computer vision to keep track of each players robots. It will also relay the users commands to the respective robots.
+Tracking will be done by the Hub using a camera and an open source computer vision library that will process each frame from the camera. When we design the casing for each robot we will make sure to make them distinct colors so it will be easier to contrast each robot. The tracking is used in order to recognize when a player has been eliminated from the playing field so that we can update the game state and broadcast which players are still active to the controllers. It will also restrict any commands to robots that have been eliminated.
+
+\section{Game Mechanics}
+
+The style of this game can be described as battle royale mixed with bumper car sumo. In other words, bumper cars will be put on a platform and try to knock each other out of the play area. Last one standing wins. 
+
+\subsection{Setup}
+
+The hub will start up the server which will then wait for player connections to populate the game. Each player will navigate to the website and they will be prompted to choose an available robot. Once each robot is reserved, the hub will broadcast a countdown to each controller until the game starts. 
+
+\subsection{Game Loop}
+
+Once the countdown reaches zero the game will begin. Each controller will then be able to send commands to the hub which will propagate to the robot if it's still active. The goal for each player is to stay on the platform while trying to use its robots to physically push all other opponents off of the platform. The game will continue until all but one robot remain. Once only one robot remains, the hub will broadcast the winning robot to each controller and reset the game state into the Game setup. 
 
 \section{Resources}
+
+\section{Stretch Goals}
 
 
 
