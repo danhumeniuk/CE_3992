@@ -3,6 +3,8 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{lettrine}
+\usepackage{caption}
+
 
 
 \newcommand\blfootnote[1]{%
@@ -47,16 +49,23 @@ Our goal, above all else, is that our game is fun. Playtesting will be a major c
 
 \subsection{Outline}
 
-The project will require new software and hardware. To complete the project, we will need controllers, robots, trackers, and a main control mechanism. The controllers will be implemented as a web page that can be reached from many mediums. The robots will be created with two DC motors that are connected to WiFi or Bluetooth and powered by a battery.  A tracking system can be implemented with video tracking technology. The main controller for the game will need to communicate with the tracker and controllers. We may elect to run the controller from a laptop or a custom made device. With these four components, the game will be able to be made into a reality.
+The project will require new software and hardware. To complete the project, we will need controllers, robots, trackers, and a main control mechanism. The controllers will be implemented as a web page that can be reached from many mediums. The robots will be created with two DC motors that are connected to WiFi or Bluetooth and powered by a battery.  A tracking system can be implemented with video tracking technology. The main controller for the game will need to communicate with the tracker and controllers. We may elect to run the controller from a laptop or a custom made device. With these four components, the game will be able to be made into a reality. 
 
 \subsection{Hub}
 
-The Hub will be a raspberry pi device that will have four primary functions: To capture the game state from a camera peripheral, use computer vision to keep track of each robots location, host a web server that will have bi-directional communication with the controllers, and wifi communication to relay the players commands to their respective robots. 
+The Hub will be a Raspberry Pi device that will have four primary functions: To capture the game state from a camera peripheral, use computer vision to keep track of each robots location, host a web server that will have bi-directional communication with the controllers, and wifi communication to relay the players commands to their respective robots. Fig. 1. shows the basic illustration of the game.
 
+ \begin{figure*}[!t]
+  \centering
+  \captionsetup{justification=centering}
+      \includegraphics[width=14cm]{images/Overall.png}
+        \caption{The design for the overall game.}
+        \label{Illustration}
+\end{figure*}
 
 \subsection{Robot}
 
-The robot will be a cylindrical shape with two wheels on each side of the body that can move in either direction. The robot will look similar to Fig. 1. In order to move forward, both of the wheels will spin at the same time at the same rate. To move backwards, the same principle applies in the opposite direction. To rotate the robot right or left the wheels will spin in opposite directions. In order to facilitate these functions in each robot, we will have two DC motors spinning the wheels. The DC motors will be controlled by a micro-controller that will be WiFi or bluetooth communication compatible. The micro-controller will get information from the main controller which will send it commands such as rotate right, rotate left, move forward, and move backward. The robot's micro-controller will then take this command and compile it down to its DC motor translation mentioned earlier.
+The robot will be a cylindrical shape with two wheels on each side of the body that can move in either direction. The robot will look similar to Fig. 2. In order to move forward, both of the wheels will spin at the same time at the same rate. To move backwards, the same principle applies in the opposite direction. To rotate the robot right or left the wheels will spin in opposite directions. In order to facilitate these functions in each robot, we will have two DC motors spinning the wheels. The DC motors will be controlled by a micro-controller that will be WiFi or bluetooth communication compatible. The micro-controller will get information from the main controller which will send it commands such as rotate right, rotate left, move forward, and move backward. The robot's micro-controller will then take this command and compile it down to its DC motor translation mentioned earlier.
 
  \begin{figure}[h]
   \centering
@@ -71,7 +80,7 @@ The controllers will be any sort of device that can access the internet. Players
 
 \subsection{Tracking}
 
-Tracking will be done by the Hub using a camera and an open source computer vision library that will process each frame from the camera. When we design the casing for each robot we will make sure to make them distinct colors so it will be easier to contrast each robot. The tracking is used in order to recognize when a player has been eliminated from the playing field so that we can update the game state and broadcast which players are still active to the controllers. It will also restrict any commands to robots that have been eliminated.
+Tracking will be done by the Hub using a camera and an open source computer vision library called OpenCV that will process each frame from the camera. When we design the casing for each robot we will make sure to make them distinct colors so it will be easier to contrast each robot. The tracking is used in order to recognize when a player has been eliminated from the playing field so that we can update the game state and broadcast which players are still active to the controllers. It will also restrict any commands to robots that have been eliminated.
 
 \section{Game Mechanics}
 
@@ -87,9 +96,24 @@ Once the countdown reaches zero the game will begin. Each controller will then b
 
 \section{Resources}
 
-\section{Stretch Goals}
+This project will demand a fair amount of resources. Each robot will require 2 DC motors, 2 350 mAh LiPo batteries, 2 wheels that the motors will rotate, PCB that includes an ESP8266 microcontroller and motor drivers for each DC motor, and a casing to enclose and protect the internals. The casing will likely have to be designed and 3D printed by our group.
 
+The hub will require a Raspberry Pi to do the hub to controller communication, hub to robot communication, and the image capture and processing. The Raspberry Pi 3 Model B+ has a quad core 1.4GHz processor which should be enough processing power for these tasks. The hub will also require a camera peripheral that is compatible with the Raspberry Pi. The options for the camera are the Raspberry Pi camera, and the Logitech C922x Pro Stream Webcam. 
 
+The playing field will be constructed out of a simple table top with some 2 x 4's to hoist up the camera.
+
+Since the controller can be any device that has internet capabilities, there will not be a need for additional resources.
+
+\section{Timeline}
+
+\subsection{Spring}
+For this semester, we will utilize our embedded systems final project to develop and test our wifi communication with the ESP8266 as well as motor control. This should be enough to prototype and demo some basic wireless robot control. 
+
+\subsection{Summer}
+The summer will consist of ordering and gathering the resources needed as well as detailed design for each component of the project. 
+
+\subsection{Fall}
+Most of the legwork for the project will be done during the fall. With all components gathered and the design completed all that will be left to do is to assemble and test. We will attempt to have everything assembled a month before demo to account for bugs and unforeseen problems.
 
 % \nocite{*}
 % \bibliographystyle{IEEEtran}
