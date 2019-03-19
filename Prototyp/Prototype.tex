@@ -1,0 +1,82 @@
+\documentclass[11pt]{ieeeconf}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{lettrine}
+\usepackage{caption}
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\title{Bumper Car Sumo}
+\author{Jaden Simon, Melvin Bosnjak, Daniel Humeniuk,
+ \textit{Students}, \textit{University of Utah}}
+
+\begin{document}
+\begin{titlepage}
+  \centering
+  \
+  \vfil
+  \Large Prototype Proposal\\
+  \Large ECE 3992\\
+  \Large Spring 2019\\  
+  \Large Jaden Simon - simonjaden223@gmail.com \\
+  \Large Melvin Bosnjak - meco0597@gmail.com \\ 
+  \Large Daniel Humeniuk - d.humeniuk@utah.edu \\  
+  \Large http://bumpercarsumo.weebly.com/\\
+  \vfil
+\end{titlepage}
+
+
+\maketitle
+\begin{abstract}
+Ass
+\end{abstract}
+
+\section{Introduction}
+\lettrine{T}{he} most important criteria of our game’s success are cost and entertainment efficiency. Our game must yield high levels of fun per minute played, while keeping costs as low as possible without compromising the entertainment value. Competition in games is a key element for high entertainment value \cite{vord:03}.  Because of this, our team decided to create a game where player-controlled robots attempt to push each other out of an arena. To facilitate gameplay, our robots need to be easily pushed around by other robots. Controls should be easy to enhance playability, though not too easy. We need a way to detect game conditions, such as when a robot is out of bounds or when a player wins. This could be done with a human referee, but that would take away immersion of the game. Because some players may not have friends to play with, it is desirable to have an AI to play against. 
+
+Since cost is a contributing factor to our design, we will want to use existing technologies as much as possible. Robots can be constructed as a two-wheeled platform with wireless modules, similar to a Segway. They will be controlled through a web interface accessible by a wide variety of devices. Computer vision libraries will allow us to track the location of each robot if painted differently. Exact positioning solves the problem of detecting game conditions, plus giving us plenty of information to use for a basic AI. 
+
+Our goal, above all else, is that our game is fun. Playtesting will be a major component of our design process, rethinking aspects of the game if it is not fun. Costs will be mitigated, but entertainment value will never be sacrificed for savings. Player enjoyment is our primary measure of success.
+
+
+\section{Background}
+
+\section{Design}
+
+
+\subsection{Hub}
+
+\subsection{Robot}
+
+\subsection{Controller}
+
+\subsection{Tracking}
+
+\section{Timeline}
+
+\subsection{Spring}
+
+\subsection{Summer}
+
+\subsection{Fall}
+
+\section{Resources}
+
+\subsection{Game Round}
+Each game round will depend on the game mode. In all of our game modes, players are eliminated if their robot leaves the play area. For a free-for-all, the game round ends when all but one player is eliminated. If a team mode is implemented, then a game round ends when only a single team remains. Game modes may have time limits, though this will depend on play testing during development.
+
+\subsection{Post Game}
+If we are able to meet our minimum requirements, then additional features will be added to aid user experience. This would include post game reports that contain information about the player such as eliminations, maximum speed, or the biggest hit taken. After any post game reports, our demo will start again at the setup.
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,bib/ref}
+
+\end{document}
