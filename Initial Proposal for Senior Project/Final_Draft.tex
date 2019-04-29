@@ -83,10 +83,21 @@ Our robots will be cylindrically shaped with two wheels on each side of the body
         \label{RobotFig}
 \end{figure}
 
-
 \subsection{Controller}
 % Talk about using Wii balance board and/or game console controller 
 % Maybe talk about other ways to control the robots ? 
+The controller provides the opportunity to add interesting game mechanisms that are unique to our game. We have been discussing ideas for unique control options and have come up with several ideas. The ideas discussed have been utilizing a web server in which players can use keyboard inputs to move the robots as they watch the game through the web camera. Another option is using existing technologies such as the Wii Balance board, as seen in Fig \ref{Wii Balance Board}, or standard Super Nintendo Controllers which have the potential to be wireless. The last option is creating a custom controller with two foot pedals that drive separate motors on the robot. The final decision of the controller lies within how much it adds to the game play. Each controller will be discussed in further detail below. 
+
+% Wii fit board figure
+\begin{figure}[H]
+\centering
+\captionsetup{justification=centering}
+\includegraphics[width=0.5\textwidth]{images/wii.jpg}
+\caption{The Wii Balance Board \\Source: Adapted from \cite{wii:19}}
+\label{Wii Balance Board}
+\end{figure}
+
+The Wii Balance Board promises interesting 
 
 We want our game to be easily accessible by a wide range of players. To achieve this we will use a combination of software and hardware controllers. Web applications can be run on numerous devices and are relatively easy to develop. Players would be able to access a web server on their own devices to control the robots. Our hub will act as the web server and process incoming commands, translating them into commands for the robots. The controller interface will be the arrow keys for a computer and buttons for a phone. Our web server may also send information about our robots back to the client, which may include orientation, speed, acceleration, or possibly a live camera feed. Basic user interface and web server software should only take two weeks.
 
