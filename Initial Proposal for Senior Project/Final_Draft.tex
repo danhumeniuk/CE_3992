@@ -86,18 +86,20 @@ Our robots will be cylindrically shaped with two wheels on each side of the body
 \subsection{Controller}
 % Talk about using Wii balance board and/or game console controller 
 % Maybe talk about other ways to control the robots ? 
-The controller provides the opportunity to add interesting game mechanisms that are unique to our game. We have been discussing ideas for unique control options and have come up with several ideas. The ideas discussed have been utilizing a web server in which players can use keyboard inputs to move the robots as they watch the game through the web camera. Another option is using existing technologies such as the Wii Balance board, as seen in Fig \ref{Wii Balance Board}, or standard Super Nintendo Controllers which have the potential to be wireless. The last option is creating a custom controller with two foot pedals that drive separate motors on the robot. The final decision of the controller lies within how much it adds to the game play. Each controller will be discussed in further detail below. 
+The controller provides the opportunity to add interesting game mechanisms that are unique to our game. We have been discussing ideas for unique control options and have come up with several ideas. The ideas discussed have been utilizing a web server in which players can use keyboard inputs to move the robots as they watch the game through the web camera. Another option is using existing technologies such as the Wii Balance board, as seen in Fig \ref{Wii}, or standard Super Nintendo Controllers which have the potential to be wireless. The last option is creating a custom controller with two foot pedals that drive separate motors on the robot. The final decision of the controller lies within how much it adds to the game play. Each controller will be discussed in further detail below.
 
 % Wii fit board figure
 \begin{figure}[H]
 \centering
 \captionsetup{justification=centering}
 \includegraphics[width=0.5\textwidth]{images/wii.jpg}
-\caption{The Wii Balance Board \\Source: Adapted from \cite{wii:19}}
-\label{Wii Balance Board}
+\caption{The Wii Balance Board}
+\label{Wii}
 \end{figure}
 
-The Wii Balance Board promises interesting 
+A web-based control system will offer the cheapest possible controller with some possibilities to enhance the playing experience. The users will have the option to connect to a WiFi network and log into a website we will create for the game. The website will be streaming a live feed of the game play area via web camera technology. The players will receive a brief overview of the controls that are enabled on their keyboards and are then allowed to select a robot color of their choice. With the use of OpenCV, the robots will be tracked on screen with and player names will be displayed above their respective robot. This also adds potential to enhance the game with power-ups existing only in the cyber realm. The major draw back to this option is it will remove the players from the physical properties of the game. It is still possible for the players to enjoy the game as intended with controls on a laptop but this option does remain on the lower end of the selection process. 
+
+The Wii Balance Board promises an interesting controller experience. 
 
 We want our game to be easily accessible by a wide range of players. To achieve this we will use a combination of software and hardware controllers. Web applications can be run on numerous devices and are relatively easy to develop. Players would be able to access a web server on their own devices to control the robots. Our hub will act as the web server and process incoming commands, translating them into commands for the robots. The controller interface will be the arrow keys for a computer and buttons for a phone. Our web server may also send information about our robots back to the client, which may include orientation, speed, acceleration, or possibly a live camera feed. Basic user interface and web server software should only take two weeks.
 
@@ -106,6 +108,12 @@ We want our game to be easily accessible by a wide range of players. To achieve 
 \subsection{Tracking}
 
 Tracking will be done by the hub using a camera and OpenCV. The casings for each robot will be designed in such a way to allow for easy identification by algorithms. Players who leave the camera's field of view will be considered eliminated by the hub, preventing control of the robot by the player. Since our camera will be static, the total play area is limited by our camera's height and field of view. Our play surface will be monochromatic which increases our tracking capability, though we should be able to track with an arbitrary surface. The timeline for tracking is largely dependent on the hub and the robot, though 2 weeks seems like a reasonable amount of time.
+
+\section{Game Mechanics}
+
+\subsection{Game Modes}
+
+There will be many game modes to select from. The primarily plan was to design the game arena to accommodate only one game mode. The team has elected to enable for multiple game modes to provide longevity to the product.    
 
 \section{Timeline}
 % Every person needs at least 5 milestones 
