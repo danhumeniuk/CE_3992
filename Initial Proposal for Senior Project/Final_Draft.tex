@@ -59,7 +59,7 @@ To complete the project, we will need a main control mechanism (a hub), robots, 
 \subsection{Hub}
 % Talk more about AI 
 
-The hub will be a Raspberry Pi device that will have four primary functions: To capture the game state from a camera peripheral, use computer vision to keep track of each robots location, host a web server that will have bi-directional communication with the controllers, and communicate wirelessly to relay the players' commands to their respective robots. Fig. \ref{Illustration} shows the basic illustration of the game. If time allows, then our AI implementation will be done on the hub. This component of the project requires no custom hardware and can be done entirely in software. Core hub software will take at most a month for full development and testing. 
+The hub will be a Raspberry Pi device that will have four primary functions: To capture the game state from a camera peripheral, use computer vision to keep track of each robots location, host a web server that will have bi-directional communication with the controllers, and communicate wirelessly to relay the players' commands to their respective robots. Fig. \ref{Illustration} shows the basic illustration of the game. If time allows, then our AI implementation will be done on the hub. This component of the project requires no custom hardware and can be done entirely in software. The Core hub software will take at most a month for full development and testing. 
 
 % Game design figure
  \begin{figure*}[!t]
@@ -131,6 +131,25 @@ Most of the legwork for the project will be done during the fall. With all compo
 
 \subsection{Component Assignments}
 As already discussed, the project is separated into 4 key components. Each component will have a single group member act as lead developer. Robots and tracking will be managed by Jaden. Development of the hub and its communication protocol will be done by Melvin. Dan is tasked with creating the software controller interface as well as working on variations of hardware interfaces. 
+
+
+\section{Milestones}
+Each group member will have at least 5 milestones to their assigned component: 
+
+\subsection{Melvin}
+For Melvin, his component will be heavily involved with the Hub device, so the first milestone will be getting a basic network connection with multiple ESP8266 client devices. This will be done over the summer. This should be quick as we have demonstrated working a client server network connection for the prototype. 
+
+The second milestone will be creating a communication API with the Hub. This will consist of designing a protocol to support controller to hub commands and hub to client commands. Some potential risks with this is latency, and computing power. The Hub device has many responsibilities such as camera I/O, game logic, handling many network communication channels, and running OpenCV. In order to reduce these risks the Hub will be using UDP connections with each client and multi-threading each task. This will also be done over the summer.
+
+The third milestone will be to interface the hub device with the camera peripheral that we will use to capture the game state. This will include ordering the appropriate camera for our tasks, figuring out how to gather frame data from the camera, and propagating that frame data to OpenCV. Risks that come with this milestone is again latency with gathering and processing the frame data while also having it available for game logic and possible augmented reality application, which will require sending each frame to client devices. In order to mitigate these risks, we will carefully choose hardware with sufficient specs to do the job. This will be done over the summer.
+
+The fourth milestone will be to create a model that captures and processes the game state within the hub so that it can easily control game mechanics. This will have to continuously read the game state from the camera API and store it in its internal model. Based on the model, it will then send the appropriate commands/data to clients. This will be made very modular in order to support multiple game modes. A potential risk with this milestone is difficulty in synchronizing each component so that the real time portions of the projects execute smoothly. To ensure smooth execution and integrity of data, multi-threading and appropriate locks on shared data will be applied. This will be done in the fall along with the last milestone.
+
+The last milestone will be to integrate and test the hub with the whole system. This will depend on the state of each other component, but we would like to leave at least a month before demo day to complete this milestone in order to leave time for integrating stretch goals and finalizing the project. Risks with this milestones is timing with each other component as it depends on the completion of each of the other components. to better alleviate this risk, we will add deadlines for each component.  
+
+\subsection{Jaden}
+
+\subsection{Dan}
 
 \section{Resources}
 % Flesh out this section (full BOM) 
