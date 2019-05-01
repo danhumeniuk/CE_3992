@@ -57,18 +57,23 @@ Tracking the robots would be a huge undertaking, but luckily there exists an ope
 To complete the project, we will need a main control mechanism (a hub), robots, controllers, and tracking. A centralized hub will be the core of the project, which will coordinate the other three components. The robots will use a custom PCB with an inertial measurement unit (IMU) and low-voltage motor driver, able to communicate via WiFi through an ESP8266. Our controllers will have both a physical and software interface. An overhead camera will be used to monitor the locations of our robots, which will be combined with IMU data for an extremely accurate positioning system. Separating these four components allows for simultaneous development by our team members.
 
 \subsection{Hub}
-% Talk more about AI 
+The hub will be a Raspberry Pi device that will have a few functions:
+It will capture the game state from a camera peripheral. The camera will be hooked directly into the Raspberry Pi and the hub software will have to continuously take the frame data from the camera and pass it as an input to openCV. The hub software will then associate the color of the robot with the location openCV outputs to keep track of each robots location. This process will be on its own thread that will have to share memory with the thread that is running the game loop. This allows the game logic to know the location of robots at all times. This means we will have to eliminate race conditions with thread locks. A flowchart is shown in \ref{flowchart}.
 
-The hub will be a Raspberry Pi device that will have four primary functions: To capture the game state from a camera peripheral, use computer vision to keep track of each robots location, host a web server that will have bi-directional communication with the controllers, and communicate wirelessly to relay the players' commands to their respective robots. Fig. \ref{Illustration} shows the basic illustration of the game. If time allows, then our AI implementation will be done on the hub. This component of the project requires no custom hardware and can be done entirely in software. The Core hub software will take at most a month for full development and testing. 
+Another thread will be hosting a server. The server will have communication with the controllers, and each robot. This thread will be a loop that takes in player inputs, updates the game state, then sends the appropriate commands to the robots. The hub will most likely have to hold many game models to support the game modes.
+
+Fig. \ref{Illustration} shows the basic illustration of the game. If time allows, then our AI implementation will be done on the hub. This component of the project requires no custom hardware and can be done entirely in software. The Core hub software will take at most a month for full development and testing. 
 
 % Game design figure
  \begin{figure*}[!t]
   \centering
   \captionsetup{justification=centering}
-      \includegraphics[width=14cm]{images/Overall.png}
+      \includegraphics[width=14cm]{Initial Proposal for Senior Project/images/Flowchart.png}
         \caption{Overall game design}
         \label{Illustration}
 \end{figure*}
+
+
 
 \subsection{Robot}
 % Describe in more detail 
@@ -147,15 +152,15 @@ As already discussed, the project is separated into 4 key components. Each compo
 Each group member will have at least 5 milestones to their assigned component: 
 
 \subsection{Melvin}
-For Melvin, his component will be heavily involved with the Hub device, so the first milestone will be getting a basic network connection with multiple ESP8266 client devices. This will be done over the summer. This should be quick as we have demonstrated working a client server network connection for the prototype. 
+For Melvin, his component will be heavily involved with the Hub device, so the first milestone will be getting a basic network connection with multiple ESP8266 client devices. This will be done over the summer. This should be quick as we have demonstrated working a client server network connection for the prototype. During Demo day this will be shown with the ability to control each robot wirelessly as this will require handling multiple wireless connections simultaneously.
 
-The second milestone will be creating a communication API with the Hub. This will consist of designing a protocol to support controller to hub commands and hub to client commands. Some potential risks with this is latency, and computing power. The Hub device has many responsibilities such as camera I/O, game logic, handling many network communication channels, and running OpenCV. In order to reduce these risks the Hub will be using UDP connections with each client and multi-threading each task. This will also be done over the summer.
+The second milestone will be creating a communication API with the Hub. This will consist of designing a protocol to support controller to hub commands and hub to client commands. This will be tested once we test connecting the whole system together. This will also be shown with the ability to control each robot wirelessly. This will also be done this summer.
 
-The third milestone will be to interface the hub device with the camera peripheral that we will use to capture the game state. This will include ordering the appropriate camera for our tasks, figuring out how to gather frame data from the camera, and propagating that frame data to OpenCV. Risks that come with this milestone is again latency with gathering and processing the frame data while also having it available for game logic and possible augmented reality application, which will require sending each frame to client devices. In order to mitigate these risks, we will carefully choose hardware with sufficient specs to do the job. This will be done over the summer.
+The third milestone will be to interface the hub device with the camera peripheral that we will use to capture the game state. This will include ordering the appropriate camera for our tasks, figuring out how to gather frame data from the camera, and propagating that frame data to OpenCV. This will be shown by the ability to detect when a robot has gone out of the play area. This will be done later in the summer.
 
-The fourth milestone will be to create a model that captures and processes the game state within the hub so that it can easily control game mechanics. This will have to continuously read the game state from the camera API and store it in its internal model. Based on the model, it will then send the appropriate commands/data to clients. This will be made very modular in order to support multiple game modes. A potential risk with this milestone is difficulty in synchronizing each component so that the real time portions of the projects execute smoothly. To ensure smooth execution and integrity of data, multi-threading and appropriate locks on shared data will be applied. This will be done in the fall along with the last milestone.
+The fourth milestone will be to create a model that captures and processes the game state within the hub so that it can easily control game mechanics. This will have to continuously read the game state from the camera API and store it in its internal model. Based on the model, it will then send the appropriate commands/data to clients. This will be made very modular in order to support multiple game modes. This will be done in the fall along with the last milestone. This will be shown by the hubs ability to manage a game and keep track of score, winner etc.
 
-The last milestone will be to integrate and test the hub with the whole system. This will depend on the state of each other component, but we would like to leave at least a month before demo day to complete this milestone in order to leave time for integrating stretch goals and finalizing the project. Risks with this milestones is timing with each other component as it depends on the completion of each of the other components. to better alleviate this risk, we will add deadlines for each component.  
+The last milestone will be to integrate and test the hub with the whole system. This will depend on the state of each other component, but we would like to leave at least a month before demo day to complete this milestone in order to leave time for integrating stretch goals and finalizing the project. This will be shown by the system working as expected.
 
 \subsection{Jaden}
 
@@ -180,7 +185,7 @@ In order to stay on top of our set deadlines, our group will be meeting at least
 
 \section{Risk Management}
 % Describe risks for each task, some might not have any
-For the Hub device, the main concern will be computing power. The hub will have many processes to do simultaneously so it will need to have the necessary hardware to be able to handle the load smoothly. We will need to do some research and make some calculations in order to choose the most appropriate device to act as the hub.
+For the Hub device, Some potential risks with this is latency, and computing power. The Hub device has many responsibilities such as camera I/O, game logic, handling many network communication channels, and running OpenCV. In order to reduce these risks the Hub will be using UDP connections with each client and multi-threading each task. This will also be done over the summer. This will require a device that has multiple cores, wifi capabilities, and a fast processor. That is why we chose the Raspberry Pi 3 Model B+.
 
 \section{Testing}
 Much of our time spent testing will be focused on robot design and user experience. The most complicated part of our robot will be the integration of a battery, but once that is complete we will focus on debugging software communication protocols. In addition, play-testing of the project is fundamental to our success. We must ensure that our game is entertaining through repeated testing of robot collisions and the user interface. Collisions with robots should feel powerful and the user interface should be responsive and free of frustration. Beyond that, we will need to experiment with the durability of our robots to make sure they do not break during play.
