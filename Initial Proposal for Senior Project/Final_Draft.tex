@@ -150,22 +150,28 @@ The dynamic game arena will contain the ability to control the bumpers along the
 
 \subsection{Game Modes}
 %Let's call the rocket league game play mode Wheel-Ball. Kinda like football but for a robot with a wheel instead of a foot
-There will be many game modes to select from. The primarily plan was to design the game arena to accommodate only one game mode. The team has elected to enable for multiple game modes to provide longevity to the product.    
+There will be many game modes to select from. The primarily plan was to design the game arena to accommodate only one game mode. The team has elected to enable for multiple game modes to provide longevity to the product. Each game mode will require the players to change their play styles and tactics from game to game. 
+
+\subsection{Battle Royale}
+
+The first game mode that the group proposed is Battle Royale. The players will drive their robots into other robots in attempts to knock them out of the game arena. The tracking software will monitor where the robots are on the board and detect when a robot goes out of bounds and shut it off. The last robot on the board will win. If there is a circumstance when the remaining robots exit the board at the same time, the winner will be determined by the detection software and it's interpretation of which robot exited first. The game finishes, the results are displayed, and the players have the option to replay a match, change controllers, or select a different game mode.  
+
+\subsection{Team Battle Royale}
+
+Team Battle Royale game mode contains many of the same rules as the previous Battle Royale with the exception that players will be working together in teams against other teams. This game mode requires a lot of play testing to determine what additional features the Hub will require. To eliminate stalemates and standoffs, the Hub will reserve the ability to temporarily retake control from the players and separate them if the robots remain in the same area for a specified length of time. A stalemate will be defined as two or more robots attempting to push one another with no avail. The motor drivers will relay heat sensor information and notify the Hub that they are exerting power with no movement from the motors. The Hub will take over if this event occurs to ensure that power in the robots is conserved as well as protecting the motors within the robots. The players will have the option of selecting two teams with two to four players per team or four teams with two players per team. Because of the physical nature of the game, friendly fire is a possibility and the Hub will take note of the times players take out their own team members. The game ends when all but one team is remaining on the game arena. 
+
+\subsection{Wheel-ball}
+
+Wheel-ball is another team based game mode. The teams will work together to move a ball across the arena and into the opposing team's goal. It is up to the teams on how they wish to accomplish this goal and it is possible that one player acts as a goalie. There are some more rules required for this game mode as it will be possible for a robot to completely cover their team's goal line. This requires more interactions from the Hub but it is necessary to enable a fair game will be played. Each time the ball enters into a team's goal, the opposing team is awarded a point, even if a team scored on itself. The time limit for the games will be five minutes. Once the five minutes has expired, the team with the most points wins the match.
+
+To ensure the players are playing by the rules, the Hub and detection software will work together to ensure the players are behaving. If a player attempts to block their own goal zone, the Hub will take temporary control of the robot, move it away from the goal, and deactivate it for ten seconds. The diameter of this zone will be painted on the game arena with a color that the detection software will be able to detect. The rule will be considered violated if 30\% or more of the robot is within this zone for over three seconds. This will allow for players to think about their decisions and how to defend their goal without getting too close. 
+
+\subsection{Smash-n-Bash}
+
+The Smash-n-Bash game mode will be implemented if enough time permits. This game mode will assign each player a health bar that will detriment each time the player is hit by an opponent. To accomplish this, the video detection software will track the directions the players are heading in to determine if the player was hit or doing the hitting. With each hit detected, the hitting player will accumulate points.  
 
 \section{Timeline}
-In order to finish our project before demo day, we have created a timeline. While the deadlines listed here are not set in stone, it should give us a good idea of what we need done by when. The length of the bars represent about how long it should take to complete the task. Each group member is assigned to a certain task dependent on the bar's color, though there is some flexibility there as well. Some of the tasks are dependent on the completion of previous tasks, so it is important for us not to get too far behind schedule.
-
-\subsection{Spring}
-For the remaining month of May we will finalize our required parts list. This includes verifying we have the correct parts, checking availability, and price calculations.
-
-\subsection{Summer}
-The summer will consist of ordering and gathering the resources needed as well as detailed design for each component of the project. Basic documentation of our hardware and software interfaces will be completed by the end of the summer. We will complete a basic software interface and start experimenting with hardware interfaces. If time allows then we can create a basic play surface, since it is not dependent on the completion of any singular component.
-
-\subsection{Fall}
-Most of the legwork for the project will be done during the fall. With all components gathered and the design completed all that will be left to do is to assemble, test, and finalize documentation. Each project component will be worked on simultaneously. Integration between the four components of the project will not take long if our interfaces were designed correctly, perhaps only a week or two. The minimum requirements of the project is planned to be completed and tested a month before the demo day. A large amount of extra time allows us to experiment with additional features that will hopefully add to the entertainment value.
-
-\subsection{Component Assignments}
-As already discussed, the project is separated into 4 key components. Each component will have a single group member act as lead developer. Robots and tracking will be managed by Jaden. Development of the hub and its communication protocol will be done by Melvin. Dan is tasked with creating the software controller interface as well as working on variations of hardware interfaces. Fig \ref{schedule} provides a graphical representation of the separate responsibilities of each component. The integration of our multiple components will begin in the middle of the fall. The next section will detail the milestones each member must accomplish in order for the project to succeed on schedule.
+In order to finish our project before demo day, we have created a timeline as seen in Fig \ref{schedule}. While the deadlines listed here are not set in stone, it should give us a good idea of what we need done by when. The length of the bars represent about how long it should take to complete the task. Each group member is assigned to a certain task dependent on the bar's color, though there is some flexibility there as well. Some of the tasks are dependent on the completion of previous tasks, so it is important for us not to get too far behind schedule.
 
 % Graphic of timeline
  \begin{figure*}[!t]
@@ -175,6 +181,18 @@ As already discussed, the project is separated into 4 key components. Each compo
         \caption{An itemized schedule for the group}
         \label{schedule}
 \end{figure*}
+
+\subsection{Spring}
+For the remaining month of May we will finalize our required parts list. This includes verifying we have the correct parts, checking availability, and price calculations. 
+
+\subsection{Summer}
+The summer will consist of ordering and gathering the resources needed as well as detailed design for each component of the project. Basic documentation of our hardware and software interfaces will be completed by the end of the summer. We will complete a basic software interface and start experimenting with hardware interfaces. If time allows then we can create a basic play surface, since it is not dependent on the completion of any singular component.
+
+\subsection{Fall}
+Most of the legwork for the project will be done during the fall. With all components gathered and the design completed all that will be left to do is to assemble, test, and finalize documentation. Each project component will be worked on simultaneously. Integration between the four components of the project will not take long if our interfaces were designed correctly, perhaps only a week or two. The minimum requirements of the project is planned to be completed and tested a month before the demo day. A large amount of extra time allows us to experiment with additional features that will hopefully add to the entertainment value.
+
+\subsection{Component Assignments}
+As already discussed, the project is separated into 4 key components. Each component will have a single group member act as lead developer. Robots and tracking will be managed by Jaden. Development of the hub and its communication protocol will be done by Melvin. Dan is tasked with creating the software controller interface as well as working on variations of hardware interfaces. Fig \ref{schedule} provides a graphical representation of the separate responsibilities of each component. The integration of our multiple components will begin in the middle of the fall. The next section will detail the milestones each member must accomplish in order for the project to succeed on schedule.
 
 \section{Milestones}
 % Every person needs at least 5 milestones 
