@@ -73,33 +73,41 @@ Fig. \ref{Illustration} shows the basic illustration of the game. If time allows
         \label{Illustration}
 \end{figure*}
 
-
-
+% Maybe split each component into new sections (Robot Design, Hub Design, Controller Desgin)
+% That way they can each have their own subsections
 \subsection{Robot}
-% Describe in more detail 
-
-Our robots will be cylindrically shaped with two wheels on each side of the body that can move in either direction (Fig. \ref{RobotFig}). In order to move forward, both of the wheels will spin at the same time at the same rate. To move backwards, the same principle applies in the opposite direction. Rotating the robot left or right requires spinning the motors in opposite directions. An ESP8266 microcontroller will provide WiFi and Bluetooth capability while also allowing for command interpretation from the hub. Our motors will require significant current so a custom driver will be required. The torque of our motors is important for our robots to be able to push each other around. Additional components can be added to keep track of orientation or acceleration. Batteries of suitable capacity and voltage will be determined once the robot requirements are finalized. The robot will take up to 3 months to fully develop and test due to its requirement of custom hardware. 
+% More pictures
+Our robots will be cylindrically shaped with two wheels on each side of the body that can move in either direction independently (Fig. 3). In order to move forward, both of the wheels will spin at the same time at the same rate. To move backwards, the same principle applies in the opposite direction. Rotating the robot left or right requires spinning the motors in opposite directions. Because of space and cost limitations, we are aiming to keep our robots small with a maximum length of 6 inches and maximum height of 3 inches. Ideally, the robots will weigh between 8 and 16 oz, lightweight enough for quick acceleration yet hefty enough to push each other around. Designing the robot can be subdivided into 5 components: custom PCB, power subsystems, powertrain, shell, and software.
 
 % Robot design figure
  \begin{figure}[H]
   \centering
-      \includegraphics[width=0.5\textwidth]{images/RobotSketch.pdf}
+      \includegraphics[width=0.5\textwidth]{images/RobotSchematic}
         \caption{Basic robot layout}
         \label{RobotFig}
 \end{figure}
 
+A custom PCB with an ESP-12S will be the heart of our robots, driving our motors as well as providing voltage regulation and wireless communication. Additionally, an inertial measurement unit (IMU) will be used for positioning data. This data will be relayed back to the hub for additional processing. Programming an ESP-12S requires a USB-to-UART chip and a USB connector. These components are very common and will not be a major factor in our design. A low-voltage motor driver is required due to the fact that our highest voltage available is only 3.7V. Currently, the PCB is designed to be 2x2 inches, giving plenty of room inside the shell for the battery, motors, and gears.
+
+To reduce system complexity, we are using a single 3.7 lithium polymer battery to power the robot. The ESP-12S requires 3.3V which means we need a voltage regulator to convert the variable battery voltage to a steady 3.3V. A battery charging IC on the board lets us charge our batteries without having to disassemble the robot. Most charging ICs can safely provide 500mA, charging in a reasonable time. Our custom board will average around 120 mA during normal operation, though the motors can consume up to 2A combined at max load, depending on the motor. Because the motors require large amounts of current, they will need to be powered directly by the battery rather than the on-board voltage regulator. With a 2000 mAh battery we can expect 2 hours of playtime, taking 4 hours to charge at 500mA. The ESP-12S chip has a peak current draw of 500 mA, so we should plan on using a voltage regulator that can support at least 600 mA.
+
+We want our motors to provide enough force to push other robots around. With a little bit of physics we can estimate the force required to begin pushing a robot. Assuming our robots weigh 1 lb, our wheels are rubber, and the arena is made of wood, we would require around 2 newtons of force to overcome static friction. We will account for a margin of error with the friction coefficient as well as the friction from the pushing robot to give us a design requirement of 3 newtons. Since we have two wheels, each wheel will need to provide 1.5 newtons of force. Our wheel diameter is planned to be around 1 cm in diameter, giving a goal torque of 0.75 N-cm or around 76 g-cm. Motor specifications will often list their stall torque, however, this stall torque is not sustainable for long periods of time. To give an additional margin of error, we will have a desired stall torque of 5 times our goal torque, or 375 g-cm. Considering the huge variety of DC motors available, some additional research will have to be done to find the right motor. We will likely have to use a gear ratio between 10 and 20 to achieve the desired torque using standard DC toy motors. The gears will be 3D printed along with the shell. It is important to note that using gears to increase torque will decrease how fast the wheels spin proportionally. Starting from a motor running at 10000 RPM and using a gear ratio of 20, we get a final wheel RPM of 500. A RPM of 500 with 2.5 inch wheels travels at about 4 MPH, which is plenty fast for our little robots.
+
+Finally, our robots will be contained in neat little shells. Each shell should be a different color so that our OpenCV code can easily track them. PLA+ seems like a good choice for 3D printing material, being cheap yet strong enough to sustain some hits. Many of the specifics of the shell have yet to be determined since they are dependent on the physical dimensions of our components. However, we do know that the shell will be designed with a top and bottom half, with screw holes to allow for easy assembly and disassembly. Some sort of internal mounting platform would be needed to secure the PCB. A USB-port should be accessible outside the shell so that we can reprogram and charge our robots without disassembly. 
+
+The software running on the robot will be extremely simple, interpreting commands from the hub to drive the motors and send back IMU data. Some additional code could be written to monitor battery charge or change how much power is delivered to the motors. Considering all these details, the robot will take up to 3 months to fully develop and test due to its requirement of custom hardware, though a significant amount of work has already been done.
+
 \subsection{Controller}
 % Talk about using Wii balance board and/or game console controller 
 % Maybe talk about other ways to control the robots ? 
-
 The controller provides the opportunity to add interesting game mechanisms that are unique to our game. We have been discussing ideas for unique control options and have come up with several ideas. We are developing and interfacing multiple controllers to give players a choice in their play style as well as providing backup plans if one or more turn out to be unenjoyable. The ideas we are pursuing are utilizing a web server, Wii Balance Board, and Nintendo controllers. The web server involves players logging into a website and using keyboard inputs to move the robots as they watch the game through the web camera. The Wii Balance board, as seen in Fig \ref{Wii}, allows for a more interesting and challenging style of play by utilizing player movement. The Nintendo controllers will include Super Nintendo and Nintendo 64 controllers that will plug directly into the Raspberry Pi Hub. Each controller will be discussed in further detail below with their respective priority level.
 
 % Wii fit board figure
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \captionsetup{justification=centering}
-\includegraphics[width=0.5\textwidth]{images/wii.jpg}
-\caption{The Wii Balance Board may be an ideal candidate for a unique control system \cite{wiiboard:19}}
+\includegraphics[width=0.45\textwidth]{images/wii.png}
+\caption{The Wii Balance Board may be an ideal candidate for a unique control system\\ Source: Adapted from \cite{wiiboard:19}}
 \label{Wii}
 \end{figure}
 
@@ -174,6 +182,10 @@ The fourth milestone will be to create a model that captures and processes the g
 The last milestone will be to integrate and test the hub with the whole system. This will depend on the state of each other component, but we would like to leave at least a month before demo day to complete this milestone in order to leave time for integrating stretch goals and finalizing the project. This will be shown by the system working as expected.
 
 \subsection{Jaden}
+Jaden will be working on the design of the robot which includes the tracking software on the hub. His first milestone is the completion of the robot prototype PCB, showing all components are functional. This first demonstration includes programming the ESP-12S, controlling a motor, charging a battery, and using the IMU. Completing the robot PCB allows the other members to start interfacing with it, so it is important to get it done as soon as possible. The next milestone is developing the software on the robot, allowing the hub to communicate with it wirelessly. Sending commands from the hub to the robot PCB to control a motor will demonstrate that this was completed. The next goal for the robot design is creating the shell and gears necessary to complete the robot. Completion of this milestone will be shown by fitting the PCB, battery, motors, and gears within the shell. The robot's USB port should also be accessible. For the last robot design milestone, Jaden will demonstrate that the entire robot works as a cohesive unit. That is, the robot can be programmed and controlled by the hub wirelessly, driving around on battery power alone.
+
+The final two milestones for Jaden involve tracking and AI. Tracking of the robots will be implemented with OpenCV and provide the hub software with location data. If the arena and hub are complete, then this can be demonstrated by having the hub output current player locations while moving a robot around the arena. Otherwise, demonstrating the tracking capability will involve detecting colored pieces of paper, representing our robots, moving around in front of a camera. Creating a basic AI using the tracking data will be the final milestone. The AI software should run on the hub, controlling a robot autonomously. A basic AI will simply try to stay within the arena while driving towards other robots. This can be demonstrated by running the AI on one robot, then driving another robot around the arena. If the AI works then it should follow (and hit) the human-controlled robot without exiting the arena.
+
 
 \subsection{Dan}
 %Don't worry I ain't done yet
@@ -209,6 +221,8 @@ In order to stay on top of our set deadlines, our group will be meeting at least
 \section{Risk Management}
 % Describe risks for each task, some might not have any
 For the Hub device, Some potential risks with this is latency, and computing power. The Hub device has many responsibilities such as camera I/O, game logic, handling many network communication channels, and running OpenCV. In order to reduce these risks the Hub will be using UDP connections with each client and multi-threading each task. This will also be done over the summer. This will require a device that has multiple cores, wifi capabilities, and a fast processor. That is why we chose the Raspberry Pi 3 Model B+.
+
+Perhaps the biggest risk with the robot design is the development of the PCB. Getting a new PCB can take a couple of weeks, not including the time to solder the components. Debugging PCBs thus have a very high latency; you will not see if your fix actually worked for at least a week, if not more. For comparison, in software all you have to do is compile and rerun the code to test it, taking a matter of minutes. That is why we are starting the robot PCB now, before summer even begins. This gives us a huge amount of time to debug the board. We will also be triple-checking our PCBs before they get sent off for fabrication. Some of the PCB design is based off already functioning products (Ref. HUZZAH), which should increase the likelihood that it works the first time. The parts we are using are fairly common and cheap, especially if we order from China. Ordering internationally has the unfortunate side-effect of taking upwards of two months to arrive. We have tried to mitigate the possibility of not getting all of our parts on time by ordering them at the start of summer. That way if we realize we need different parts or the parts arrived broken, we have enough time to order more. As a final resort, we can always order parts from reputable domestic companies at significantly higher cost.
 
 \section{Testing}
 Much of our time spent testing will be focused on robot design and user experience. The most complicated part of our robot will be the integration of a battery, but once that is complete we will focus on debugging software communication protocols. In addition, play-testing of the project is fundamental to our success. We must ensure that our game is entertaining through repeated testing of robot collisions and the user interface. Collisions with robots should feel powerful and the user interface should be responsive and free of frustration. Beyond that, we will need to experiment with the durability of our robots to make sure they do not break during play.
