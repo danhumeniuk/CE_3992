@@ -62,7 +62,7 @@ It will capture the game state from a camera peripheral. The camera will be hook
 
 Another thread will be hosting a server. The server will have communication with the controllers, and each robot. This thread will be a loop that takes in player inputs, updates the game state, then sends the appropriate commands to the robots. The hub will most likely have to hold many game models to support the game modes.
 
-Fig. \ref{Illustration} shows the basic illustration of the game. If time allows, then our AI implementation will be done on the hub. This component of the project requires no custom hardware and can be done entirely in software. The Core hub software will take at most a month for full development and testing. 
+Fig. \ref{flowchart} shows the basic illustration of the game. If time allows, then our AI implementation will be done on the hub. This component of the project requires no custom hardware and can be done entirely in software. The Core hub software will take at most a month for full development and testing. 
 
 % Game design figure
  \begin{figure*}[!t]
@@ -70,7 +70,7 @@ Fig. \ref{Illustration} shows the basic illustration of the game. If time allows
   \captionsetup{justification=centering}
       \includegraphics[width=14cm]{images/Flowchart.png}
         \caption{Overall game design}
-        \label{Illustration}
+        \label{flowchart}
 \end{figure*}
 
 % Maybe split each component into new sections (Robot Design, Hub Design, Controller Desgin)
