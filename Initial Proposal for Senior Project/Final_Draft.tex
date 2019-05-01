@@ -140,11 +140,11 @@ Tracking will be done by the hub using a camera and OpenCV. The casings for each
 
 The arena for the game will be a flat piece of circular wood, similar to a tabletop without legs. The diameter will be 6ft and no more than an inch off of the ground. There will be four pillars attached at equal parts from one another around the circumference of the arena which will extend upwards. The pillars will extend upwards form a cone shape and meet in the middle. The point of intersection will support the Hub and the camera. 
 
-Some game modes will require a bumper to be added to the edges to ensure all the objects within the arena stay within the arena. For the Wheel-Ball game mode (see section Game Mechanics for more detail on this game mode), the bumpers will not cover two small openings on opposing sides of the arena. This opening will allow a ball to enter and a team to score. The bumpers will be created using simple wood pieces that will be connected together and wrap around the parameter. 
+Some game modes will require a bumper to be added to the edges to ensure all the objects within the arena stay within the arena. The bumpers will be four inches wide and sit an inch above the main game area. For the Wheel-Ball game mode (see section Game Mechanics for more detail on this game mode), the bumpers will not cover two small openings on opposing sides of the arena. This opening will allow a ball to enter and a team to score. The bumpers will be created using simple wood pieces that will be connected together and wrap around the parameter. 
 
 Our ideal arena will be dynamic in nature but this will be added during the polishing stages of the project and if time allows. We will make the arena dynamic by cutting holes in the board and saving the cutout pieces. By using actuators, we will drive the cutout pieces up and down on the board to add obstacles. For the Wheel-Ball game mode, we will cut out two holes on either end of the board and drive the actuators down to enable an opening large enough for the ball to enter. Once the ball enters the cutout area, the detection software will notify the Hub of a score. The actuator will drive cutout piece up and release the ball back into play. This will create a more even flow to the gameplay. A dynamic game arena will add a lot of interesting play options and require players to utilize more skill and tact in game.
 
-The dynamic game arena will contain the ability to control the bumpers along the parameter. The actuators under the arena will drive the bumpers up or down depending on the game mode. This takes the responsibility from the players to ensure the game will operate properly and allow the Hub to handle these features automatically. This also adds the possibility to catch robots after they fall off the board during the Battle Royale mode. The dynamic game arena has the potential to create a smoother game play experience for the users and eliminating the need to reset the game manually. 
+The dynamic game arena will contain the ability to control the bumpers along the parameter. The actuators under the arena will drive the bumpers up or down depending on the game mode. This takes the responsibility from the players to ensure the game will operate properly and allow the Hub to handle these features automatically. This also adds the possibility to catch robots after they fall off the board during the Battle Royale mode. This will be implemented by the tracking system. Once the robot is out of bounds, the Hub will halt the robot and it will remain out of bounds on the bumper. When the game resets, the bumpers will raise and the Hub will guide the robots back into place. The dynamic game arena has the potential to create a smoother game play experience for the users and eliminating the need to reset the game manually. 
 
 \section{Game Mechanics}
 
@@ -153,7 +153,7 @@ The dynamic game arena will contain the ability to control the bumpers along the
 There will be many game modes to select from. The primarily plan was to design the game arena to accommodate only one game mode. The team has elected to enable for multiple game modes to provide longevity to the product.    
 
 \section{Timeline}
-In order to finish our project before demo day, we have created a timeline. While the deadlines listed here are not set in stone, it should give us a good idea of what we need done by when. The length of the bars represent about how long it should take to complete the task. Each group member is assigned to a certain task dependent on the bar's color, though there is some flexibility there as well. Some of the tasks are dependent on the completion of previous tasks, so it is important for us not to get too far behind schedule. 
+In order to finish our project before demo day, we have created a timeline. While the deadlines listed here are not set in stone, it should give us a good idea of what we need done by when. The length of the bars represent about how long it should take to complete the task. Each group member is assigned to a certain task dependent on the bar's color, though there is some flexibility there as well. Some of the tasks are dependent on the completion of previous tasks, so it is important for us not to get too far behind schedule.
 
 \subsection{Spring}
 For the remaining month of May we will finalize our required parts list. This includes verifying we have the correct parts, checking availability, and price calculations.
@@ -165,8 +165,16 @@ The summer will consist of ordering and gathering the resources needed as well a
 Most of the legwork for the project will be done during the fall. With all components gathered and the design completed all that will be left to do is to assemble, test, and finalize documentation. Each project component will be worked on simultaneously. Integration between the four components of the project will not take long if our interfaces were designed correctly, perhaps only a week or two. The minimum requirements of the project is planned to be completed and tested a month before the demo day. A large amount of extra time allows us to experiment with additional features that will hopefully add to the entertainment value.
 
 \subsection{Component Assignments}
-As already discussed, the project is separated into 4 key components. Each component will have a single group member act as lead developer. Robots and tracking will be managed by Jaden. Development of the hub and its communication protocol will be done by Melvin. Dan is tasked with creating the software controller interface as well as working on variations of hardware interfaces. 
+As already discussed, the project is separated into 4 key components. Each component will have a single group member act as lead developer. Robots and tracking will be managed by Jaden. Development of the hub and its communication protocol will be done by Melvin. Dan is tasked with creating the software controller interface as well as working on variations of hardware interfaces. Fig \ref{schedule} provides a graphical representation of the separate responsibilities of each component. The integration of our multiple components will begin in the middle of the fall. The next section will detail the milestones each member must accomplish in order for the project to succeed on schedule.
 
+% Graphic of timeline
+ \begin{figure*}[!t]
+  \centering
+  \captionsetup{justification=centering}
+      \includegraphics[width=14cm]{images/schedule.png}
+        \caption{An itemized schedule for the group}
+        \label{schedule}
+\end{figure*}
 
 \section{Milestones}
 % Every person needs at least 5 milestones 
@@ -220,6 +228,8 @@ The playing field will be constructed out of a simple table top with some 2 x 4'
 \section{Group Logistics}
 In order to stay on top of our set deadlines, our group will be meeting at least once a week to discuss current tasks, issues we have experienced, and new ideas for our game. These meetings are logged on our website. Because Melvin will be in Idaho for the duration of the summer, our meetings will have to be digital and infrequent. In the fall we will resume the weekly meetings.
 
+The individual milestones presented in the Milestones section will keep the members on track and clear defined goals. Our milestones will help us develop components separately and integrate our solutions together.  
+
 \section{Risk Management}
 % Describe risks for each task, some might not have any
 For the Hub device, Some potential risks with this is latency, and computing power. The Hub device has many responsibilities such as camera I/O, game logic, handling many network communication channels, and running OpenCV. In order to reduce these risks the Hub will be using UDP connections with each client and multi-threading each task. This will also be done over the summer. This will require a device that has multiple cores, wifi capabilities, and a fast processor. That is why we chose the Raspberry Pi 3 Model B+.
@@ -238,12 +248,12 @@ On demo day, we hope to achieve a minimum requirement of 4 robots, basic user in
 First players connect to our web server through a device of their choice. Connections made in previous rounds will be preserved. Players then choose an available robot to play as. Each selected robot must be placed in designated spots, which will have to be done by humans. Once the hub detects that all robots are in the play area, the game can begin. 
 
 \subsection{Game Round}
-Each game round will depend on the game mode. In all of our game modes, players are eliminated if their robot leaves the play area. For a free-for-all, the game round ends when all but one player is eliminated. If a team mode is implemented, then a game round ends when only a single team remains. Game modes may have time limits, though this will depend on play testing during development.
+Each game round will depend on the game mode. In all of our Battle Royale game modes, players are eliminated if their robot leaves the play area. For the free-for-all Battle Royale, the game round ends when all but one player is eliminated. If team mode is implemented, then a game round ends when only a single team remains. The Wheel-ball game will track the scores of each team and utilize a time limit. At the end of the Wheel-ball round, the team with the most points wins.  
 
 \subsection{Post Game}
 If we are able to meet our minimum requirements, then additional features will be added to aid user experience. This would include post game reports that contain information about the player such as eliminations, maximum speed, or the biggest hit taken. After any post game reports, our demo will start again at the setup.
 
-The dynamic game arena will assist in post game reset if it can be implemented in time. 
+The dynamic game arena will assist in post game reset if it can be implemented in time. The Battle Royale game mode will use the automated bumpers and Hub software to ensure that the robots can leave the game arena but not continue past the lowered bumpers. The Wheel-Ball mode will control the actuators under the cutouts to release the balls once a score has been made. By implementing this, the users are not required to pick up the game ball every time a score is made. This feature can only be implemented with time permitting but it will make the game more automated and easy to play a second round. 
 
 \section{Project Status}
 % Current status of our project
