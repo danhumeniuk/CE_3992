@@ -128,6 +128,14 @@ The choice to implement multiple controllers provide more options for the player
 
 Tracking will be done by the hub using a camera and OpenCV. The casings for each robot will be designed in such a way to allow for easy identification by algorithms. Players who leave the camera's field of view will be considered eliminated by the hub, preventing control of the robot by the player. Since our camera will be static, the total play area is limited by our camera's height and field of view. Our play surface will be monochromatic which increases our tracking capability, though we should be able to track with an arbitrary surface. The timeline for tracking is largely dependent on the hub and the robot, though 2 weeks seems like a reasonable amount of time.
 
+\subsection{Arena}
+
+The arena for the game will be a flat piece of circular wood, similar to a tabletop without legs. The diameter will be 6ft and no more than an inch off of the ground. There will be four pillars attached at equal parts from one another around the circumference of the arena which will extend upwards. The pillars will extend upwards form a cone shape and meet in the middle. The point of intersection will support the Hub and the camera. 
+
+Some game modes will require a bumper to be added to the edges to ensure all the objects within the arena stay within the arena. For the Wheel-Ball game mode (see section Game Mechanics for more detail on this game mode), the bumpers will not cover two small openings on opposing sides of the arena. This opening will allow a ball to enter and a team to score. The bumpers will be created using recycled markers that will be connected together and wrap around the parameter. 
+
+Our ideal arena will be dynamic in nature but this will be added during the polishing stages of the project and if time allows. We will make the arena dynamic by cutting holes in the board and saving the cutout pieces. By using actuators, we will drive the cutout pieces up and down on the board to add obstacles. For the Wheel-Ball game mode, we will cut out two holes on either end of the board and drive the actuators down to enable an opening large enough for the ball to enter. Once the ball enters the actuator, the detection software will notify the Hub of a score. The actuator will drive cutout piece up and release the ball back into play. This will create a more even flow to the gameplay. A dynamic game arena will add a lot of interesting play options and require players to utilize more skill and tact in game.
+
 \section{Game Mechanics}
 
 \subsection{Game Modes}
@@ -174,7 +182,7 @@ The last milestone will be to integrate and test the hub with the whole system. 
 % Part number, lead time, unit cost, quantity, form factor, etc.
 \subsection{Bill of Materials}
 
-Each robot will require 2 DC motors with wheels, several batteries, a PCB that includes an ESP8266 microcontroller and motor drivers for each DC motor, and a casing to enclose and protect the internals. The casing will be designed and 3d printed by our group. Various ICs and small electrical components will be required based off our circuit designs. The design, testing, and implementation of the robot will take the bulk of the time required for this project.
+Each robot will require 2 DC motors with wheels, several batteries, a PCB that includes an ESP8266 microcontroller and motor drivers for each DC motor, and a casing to enclose and protect the internals. The casing will be designed and 3D printed by our group. Various ICs and small electrical components will be required based off our circuit designs. The design, testing, and implementation of the robot will take the bulk of the time required for this project.
 
 A Raspberry Pi will act as the hub, handling all game mechanics and user-robot interactions. The Raspberry Pi 3 Model B+ has a quad core 1.4GHz processor which should be enough processing power for these tasks. Tracking is a fundamental component of the hub and will require a camera, ideally with high resolution and FPS. The options for the camera are the Raspberry Pi camera and the Logitech C922x Pro Stream Webcam. Software on the hub will depend on multiple open source libraries to function, though will still require significant custom software to operate.
 
