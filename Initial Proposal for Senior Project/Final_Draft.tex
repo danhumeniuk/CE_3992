@@ -140,9 +140,11 @@ Tracking will be done by the hub using a camera and OpenCV. The casings for each
 
 The arena for the game will be a flat piece of circular wood, similar to a tabletop without legs. The diameter will be 6ft and no more than an inch off of the ground. There will be four pillars attached at equal parts from one another around the circumference of the arena which will extend upwards. The pillars will extend upwards form a cone shape and meet in the middle. The point of intersection will support the Hub and the camera. 
 
-Some game modes will require a bumper to be added to the edges to ensure all the objects within the arena stay within the arena. For the Wheel-Ball game mode (see section Game Mechanics for more detail on this game mode), the bumpers will not cover two small openings on opposing sides of the arena. This opening will allow a ball to enter and a team to score. The bumpers will be created using recycled markers that will be connected together and wrap around the parameter. 
+Some game modes will require a bumper to be added to the edges to ensure all the objects within the arena stay within the arena. For the Wheel-Ball game mode (see section Game Mechanics for more detail on this game mode), the bumpers will not cover two small openings on opposing sides of the arena. This opening will allow a ball to enter and a team to score. The bumpers will be created using simple wood pieces that will be connected together and wrap around the parameter. 
 
-Our ideal arena will be dynamic in nature but this will be added during the polishing stages of the project and if time allows. We will make the arena dynamic by cutting holes in the board and saving the cutout pieces. By using actuators, we will drive the cutout pieces up and down on the board to add obstacles. For the Wheel-Ball game mode, we will cut out two holes on either end of the board and drive the actuators down to enable an opening large enough for the ball to enter. Once the ball enters the actuator, the detection software will notify the Hub of a score. The actuator will drive cutout piece up and release the ball back into play. This will create a more even flow to the gameplay. A dynamic game arena will add a lot of interesting play options and require players to utilize more skill and tact in game.
+Our ideal arena will be dynamic in nature but this will be added during the polishing stages of the project and if time allows. We will make the arena dynamic by cutting holes in the board and saving the cutout pieces. By using actuators, we will drive the cutout pieces up and down on the board to add obstacles. For the Wheel-Ball game mode, we will cut out two holes on either end of the board and drive the actuators down to enable an opening large enough for the ball to enter. Once the ball enters the cutout area, the detection software will notify the Hub of a score. The actuator will drive cutout piece up and release the ball back into play. This will create a more even flow to the gameplay. A dynamic game arena will add a lot of interesting play options and require players to utilize more skill and tact in game.
+
+The dynamic game arena will contain the ability to control the bumpers along the parameter. The actuators under the arena will drive the bumpers up or down depending on the game mode. This takes the responsibility from the players to ensure the game will operate properly and allow the Hub to handle these features automatically. This also adds the possibility to catch robots after they fall off the board during the Battle Royale mode. The dynamic game arena has the potential to create a smoother game play experience for the users and eliminating the need to reset the game manually. 
 
 \section{Game Mechanics}
 
@@ -227,7 +229,7 @@ Perhaps the biggest risk with the robot design is the development of the PCB. Ge
 \section{Testing}
 Much of our time spent testing will be focused on robot design and user experience. The most complicated part of our robot will be the integration of a battery, but once that is complete we will focus on debugging software communication protocols. In addition, play-testing of the project is fundamental to our success. We must ensure that our game is entertaining through repeated testing of robot collisions and the user interface. Collisions with robots should feel powerful and the user interface should be responsive and free of frustration. Beyond that, we will need to experiment with the durability of our robots to make sure they do not break during play.
 
-\section{Project Demo}
+\section{Project Demonstration}
 % Describe what will be highlighted in the demo 
 
 On demo day, we hope to achieve a minimum requirement of 4 robots, basic user interface, and a single game mode. While 4 robots will provide enough competition to be entertaining, we ideally want 8 robots to allow more people to play. Basic user interface would only have options to control the robots in the 4 cardinal directions. More game modes are simple to implement but add enormous entertainment value.
@@ -240,6 +242,8 @@ Each game round will depend on the game mode. In all of our game modes, players 
 
 \subsection{Post Game}
 If we are able to meet our minimum requirements, then additional features will be added to aid user experience. This would include post game reports that contain information about the player such as eliminations, maximum speed, or the biggest hit taken. After any post game reports, our demo will start again at the setup.
+
+The dynamic game arena will assist in post game reset if it can be implemented in time. 
 
 \section{Project Status}
 % Current status of our project
