@@ -176,7 +176,7 @@ In order to finish our project before demo day, we have created a timeline as se
  \begin{figure*}[!t]
   \centering
   \captionsetup{justification=centering}
-      \includegraphics[width=14cm]{images/schedule.png}
+      \includegraphics[width=\textwidth]{images/schedule.png}
         \caption{An itemized schedule for the group}
         \label{schedule}
 \end{figure*}
@@ -251,7 +251,7 @@ The individual milestones presented in the Milestones section will keep the memb
 % Describe risks for each task, some might not have any
 For the Hub device, Some potential risks with this is latency, and computing power. The Hub device has many responsibilities such as camera I/O, game logic, handling many network communication channels, and running OpenCV. In order to reduce these risks the Hub will be using UDP connections with each client and multi-threading each task. This will also be done over the summer. This will require a device that has multiple cores, wifi capabilities, and a fast processor. That is why we chose the Raspberry Pi 3 Model B+.
 
-Perhaps the biggest risk with the robot design is the development of the PCB. Getting a new PCB can take a couple of weeks, not including the time to solder the components. Debugging PCBs thus have a very high latency; you will not see if your fix actually worked for at least a week, if not more. For comparison, in software all you have to do is compile and rerun the code to test it, taking a matter of minutes. That is why we are starting the robot PCB now, before summer even begins. This gives us a huge amount of time to debug the board. We will also be triple-checking our PCBs before they get sent off for fabrication. Some of the PCB design is based off already functioning products (Ref. HUZZAH), which should increase the likelihood that it works the first time. The parts we are using are fairly common and cheap, especially if we order from China. Ordering internationally has the unfortunate side-effect of taking upwards of two months to arrive. We have tried to mitigate the possibility of not getting all of our parts on time by ordering them at the start of summer. That way if we realize we need different parts or the parts arrived broken, we have enough time to order more. As a final resort, we can always order parts from reputable domestic companies at significantly higher cost.
+Perhaps the biggest risk with the robot design is the development of the PCB. Getting a new PCB can take a couple of weeks, not including the time to solder the components. Debugging PCBs thus have a very high latency; you will not see if your fix actually worked for at least a week, if not more. For comparison, in software all you have to do is compile and rerun the code to test it, taking a matter of minutes. That is why we are starting the robot PCB now, before summer even begins. This gives us a huge amount of time to debug the board. We will also be triple-checking our PCBs before they get sent off for fabrication. Some of the PCB design is based off already functioning products (ref. \cite{feather}), which should increase the likelihood that it works the first time. The parts we are using are fairly common and cheap, especially if we order from China. Ordering internationally has the unfortunate side-effect of taking upwards of two months to arrive. We have tried to mitigate the possibility of not getting all of our parts on time by ordering them at the start of summer. That way if we realize we need different parts or the parts arrived broken, we have enough time to order more. As a final resort, we can always order parts from reputable domestic companies at significantly higher cost.
 
 \section{Testing}
 Much of our time spent testing will be focused on robot design and user experience. The most complicated part of our robot will be the integration of a battery, but once that is complete we will focus on debugging software communication protocols. In addition, play-testing of the project is fundamental to our success. We must ensure that our game is entertaining through repeated testing of robot collisions and the user interface. Collisions with robots should feel powerful and the user interface should be responsive and free of frustration. Beyond that, we will need to experiment with the durability of our robots to make sure they do not break during play.
@@ -275,7 +275,6 @@ The dynamic game arena will assist in post game reset if it can be implemented i
 \section{Project Status}
 % Current status of our project
 % Robot PCB pretty much
-\subsection{Prototype}
 The current status of our project largely comes from our prototype. We have demonstrated wireless communication in a client server architecture. We have also gotten the first version of our robot PCB fabricated as seen in Fig \ref{prototype}. The PCB was tested and had some problems. The main problem stemmed from an incorrect footprint that shorted a components V\textsubscript{cc} input to ground. The error the mistake created caused the waste of the components that were ordered for the board as well as the PCBs. We have learned from the first version which will make for a much more robust second version.
 
 % Prototype PCB
@@ -288,6 +287,17 @@ The current status of our project largely comes from our prototype. We have demo
 \end{figure}
 
 Our prototype utilized the gyroscope on the STM32 Discovery Board and two ESP8266 WiFi chips to wirelessly control a motor. The WiFi chip transmitted data via UDP to the other WiFi chip that is connected to a motor driver. The motor driver powered a DC Motor and it will spin clockwise, counterclockwise, or remain still depending on the provided signal. The first attempt at data transmission was using the HTTP protocol but we found that the latency was too high to provide reliable control to the motor. Using the gyroscope also proved to be a successful experiment as we were able to control a single motor with an interesting control mechanism. We also learned of the limitations of a gyroscope. An accelerometer would have been a much more robust tool to determine movement as opposed to the STM's attached gyroscope.  
+
+Considering that the robot will take the bulk of the time on this project, we have already started work on its final PCB. The current design features an ESP-12S as the microcontroller, a DRV8835 to drive the motors, a CP2104 to convert USB signals to UART, a TLV757P LDO voltage regulator, a MCP73831/2 to charge the battery, and a MPU-6050 as the IMU (Fig. \ref{roboboard}). Our USB port is a mini-B since the cables are pretty common and the port is sturdy compared to a micro USB port. The battery is connected through a standard JST PH 2-pin connector rather than just soldering the wires onto the board. This allows us to swap out the battery much more readily. We chose to develop our own board with the ESP-12S embedded rather than purchase an external module because having everything in one system not only looks nicer, but also significantly reduces the final cost.
+
+% Final PCB
+\begin{figure}[h]
+\centering
+\captionsetup{justification=centering}
+\includegraphics[width=0.5\textwidth]{images/RobotBoard.png}
+\caption{The (almost) final robot board}
+\label{roboboard}
+\end{figure}
 
 \section{Conclusion}
 % Summarize entire proposal, include lessons learned so far (management/team/engineering) 
