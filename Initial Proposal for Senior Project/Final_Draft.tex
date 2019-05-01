@@ -148,13 +148,12 @@ The dynamic game arena will contain the ability to control the bumpers along the
 
 \section{Game Mechanics}
 
-\subsection{Game Modes}
 %Let's call the rocket league game play mode Wheel-Ball. Kinda like football but for a robot with a wheel instead of a foot
-There will be many game modes to select from. The primarily plan was to design the game arena to accommodate only one game mode. The team has elected to enable for multiple game modes to provide longevity to the product. Each game mode will require the players to change their play styles and tactics from game to game. 
+There will be many game modes to select from. The primarily plan was to design the game arena to accommodate only one game mode. The team has elected to enable for multiple game modes to provide longevity to the product. Each game mode will require the players to change their play styles and tactics from game to game. When a game finishes, the results are displayed, and the players have the option to replay the match, change controllers, or select a different game mode.
 
 \subsection{Battle Royale}
 
-The first game mode that the group proposed is Battle Royale. The players will drive their robots into other robots in attempts to knock them out of the game arena. The tracking software will monitor where the robots are on the board and detect when a robot goes out of bounds and shut it off. The last robot on the board will win. If there is a circumstance when the remaining robots exit the board at the same time, the winner will be determined by the detection software and it's interpretation of which robot exited first. The game finishes, the results are displayed, and the players have the option to replay a match, change controllers, or select a different game mode.  
+The first game mode that the group proposed is Battle Royale. The players will drive their robots into other robots in attempts to knock them out of the game arena. The tracking software will monitor where the robots are on the board and detect when a robot goes out of bounds and shut it off. The last robot on the board will win. If there is a circumstance when the remaining robots exit the board at the same time, the winner will be determined by the detection software and it's interpretation of which robot exited first.  
 
 \subsection{Team Battle Royale}
 
@@ -168,7 +167,7 @@ To ensure the players are playing by the rules, the Hub and detection software w
 
 \subsection{Smash-n-Bash}
 
-The Smash-n-Bash game mode will be implemented if enough time permits. This game mode will assign each player a health bar that will detriment each time the player is hit by an opponent. To accomplish this, the video detection software will track the directions the players are heading in to determine if the player was hit or doing the hitting. With each hit detected, the hitting player will accumulate points.  
+The Smash-n-Bash game mode will be implemented if enough time permits. This game mode will assign each player a health bar that will detriment each time the player is hit by an opponent. To accomplish this, the video detection software will track the directions the players are heading in to determine if the player was hit or doing the hitting. With each hit detected, the hitting player will accumulate points. Once a player's health is depleted, the Hub will take control of the robot and move the robot off screen. For cases with head-on collisions of the robots, the video detection software will add points to both players as well as take away health from both players. The player with the most points will be declared winner. The game mode will provide a challenging experience for the players as the players will have to dodge and outmaneuver their opponents. 
 
 \section{Timeline}
 In order to finish our project before demo day, we have created a timeline as seen in Fig \ref{schedule}. While the deadlines listed here are not set in stone, it should give us a good idea of what we need done by when. The length of the bars represent about how long it should take to complete the task. Each group member is assigned to a certain task dependent on the bar's color, though there is some flexibility there as well. Some of the tasks are dependent on the completion of previous tasks, so it is important for us not to get too far behind schedule.
@@ -216,7 +215,7 @@ The final two milestones for Jaden involve tracking and AI. Tracking of the robo
 
 
 \subsection{Dan}
-%Don't worry I ain't done yet
+
 Dan is primarily working with the controllers and the handy work for the game arena. The largest and possibly most challenging task he has been charged with is interfacing with the Wii Balance Board which is his first mile stone. This aspect of the game deals with Bluetooth which is unfamiliar to the team as a whole which is why this will be worked on over the summer. Modders in the WiiBrew \cite{homebrew} community have been working with the device and there are several resources which will lighten the load with this task. This will also require a lot of data collection to determine what outputs are given for different movements and how they could be best interfaced with the Hub. The completion of this milestone will enable the group to progress in the Hub software and other aspects of the project.
 
 The next milestone for Dan will be the completion of the game arena. This will not require any hardware or software but a working play area must be made for testing of the movement of the robots and the tracking via the web camera. This milestone will be completed before the end of the summer as well so the group can begin integrating other aspects to be completed over the summer. The early development of the game arena will also allow for any improvements to be made to the aesthetic, design, and appearance can be done with plenty of time before the presentation day.
@@ -276,7 +275,19 @@ The dynamic game arena will assist in post game reset if it can be implemented i
 \section{Project Status}
 % Current status of our project
 % Robot PCB pretty much
-The current status of our project largely comes from our prototype. We have demonstrated wireless communication in a client server architecture. We have also gotten the first version of our robot PCB fabricated and tested which had some problems, however, we have learned from the first version which will make for a much more robust second version. 
+\subsection{Prototype}
+The current status of our project largely comes from our prototype. We have demonstrated wireless communication in a client server architecture. We have also gotten the first version of our robot PCB fabricated as seen in Fig \ref{prototype}. The PCB was tested and had some problems. The main problem stemmed from an incorrect footprint that shorted a components V\textsubscript{cc} input to ground. The error the mistake created caused the waste of the components that were ordered for the board as well as the PCBs. We have learned from the first version which will make for a much more robust second version.
+
+% Prototype PCB
+\begin{figure}[H]
+\centering
+\captionsetup{justification=centering}
+\includegraphics[width=0.5\textwidth]{images/prototype.png}
+\caption{The prototype board layout}
+\label{prototype}
+\end{figure}
+
+Our prototype utilized the gyroscope on the STM32 Discovery Board and two ESP8266 WiFi chips to wirelessly control a motor. The WiFi chip transmitted data via UDP to the other WiFi chip that is connected to a motor driver. The motor driver powered a DC Motor and it will spin clockwise, counterclockwise, or remain still depending on the provided signal. The first attempt at data transmission was using the HTTP protocol but we found that the latency was too high to provide reliable control to the motor. Using the gyroscope also proved to be a successful experiment as we were able to control a single motor with an interesting control mechanism. We also learned of the limitations of a gyroscope. An accelerometer would have been a much more robust tool to determine movement as opposed to the STM's attached gyroscope.  
 
 \section{Conclusion}
 % Summarize entire proposal, include lessons learned so far (management/team/engineering) 
