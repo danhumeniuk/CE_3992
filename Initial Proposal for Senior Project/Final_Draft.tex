@@ -233,7 +233,16 @@ The last milestone for Dan is implementing the actuators onto the game arena to 
 % Part number, lead time, unit cost, quantity, form factor, etc.
 \subsection{Bill of Materials}
 
-Each robot will require 2 DC motors with wheels, several batteries, a PCB that includes an ESP8266 microcontroller and motor drivers for each DC motor, and a casing to enclose and protect the internals. The casing will be designed and 3D printed by our group. Various ICs and small electrical components will be required based off our circuit designs. The design, testing, and implementation of the robot will take the bulk of the time required for this project.
+Each robot will require 2 DC motors with wheels, several batteries, a PCB that includes an ESP8266 microcontroller and motor drivers for each DC motor, and a casing to enclose and protect the internals. The casing will be designed and 3D printed by our group. Various ICs and small electrical components will be required based off our circuit designs. The design, testing, and implementation of the robot will take the bulk of the time required for this project. Many of the parts for the robot have been determined, though we have not narrowed down which vendor we will use for each component (Fig. \ref{robobom}). Please see our website for the most recent version of the BOM including the datasheets for each component.
+
+% Robot BOM
+ \begin{figure*}[h]
+  \centering
+  \captionsetup{justification=centering}
+      \includegraphics[width=0.75\textwidth]{images/bom.png}
+        \caption{Current BOM for our robot}
+        \label{robobom}
+\end{figure*}
 
 A Raspberry Pi will act as the hub, handling all game mechanics and user-robot interactions. The Raspberry Pi 3 Model B+ has a quad core 1.4GHz processor which should be enough processing power for these tasks. Tracking is a fundamental component of the hub and will require a camera, ideally with high resolution and FPS. The options for the camera are the Raspberry Pi camera and the Logitech C922x Pro Stream Webcam. Software on the hub will depend on multiple open source libraries to function, though will still require significant custom software to operate.
 
